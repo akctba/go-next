@@ -1,0 +1,19 @@
+# To be used with extension humao.rest-client
+
+GET http://localhost:8000/api/go/users
+
+###
+
+GET http://localhost:8000/api/go/users/1
+
+###
+
+POST http://localhost:8000/api/go/users
+
+{
+    "name": "John Doe",
+    "email": "johndoe@mail.com",
+}
+
+###
+
