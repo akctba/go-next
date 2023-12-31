@@ -141,12 +141,12 @@ func createUser(db *sql.DB) http.HandlerFunc {
 		// Validate input
 		if user.Email == "" || !validateEmail(user.Email) {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte("invalid email"))
+			w.Write([]byte("{\"error\":\"invalid email\"}"))
 			return
 		}
 		if user.Name == "" {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte("name cannot be empty"))
+			w.Write([]byte("{\"error\":\"name cannot be empty\"}"))
 			return
 		}
 
@@ -187,14 +187,15 @@ func updateUser(db *sql.DB) http.HandlerFunc {
 		var u User
 		json.NewDecoder(r.Body).Decode(&u)
 
+		// Validate input
 		if u.Email == "" || !validateEmail(u.Email) {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte("invalid email"))
+			w.Write([]byte("{\"error\":\"invalid email\"}"))
 			return
 		}
 		if u.Name == "" {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte("name cannot be empty"))
+			w.Write([]byte("{\"error\":\"name cannot be empty\"}"))
 			return
 		}
 
