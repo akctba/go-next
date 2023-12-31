@@ -17,3 +17,9 @@ POST http://localhost:8000/api/go/users
 
 ###
 
+PUT http://localhost:8000/api/go/users/1
+
+{
+    "name": "John Doe",
+    "email": "jdnew@mail.com",
+}
