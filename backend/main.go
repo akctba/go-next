@@ -187,6 +187,17 @@ func updateUser(db *sql.DB) http.HandlerFunc {
 		var u User
 		json.NewDecoder(r.Body).Decode(&u)
 
+		if u.Email == "" || !validateEmail(u.Email) {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("invalid email"))
+			return
+		}
+		if u.Name == "" {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("name cannot be empty"))
+			return
+		}
+
 		vars := mux.Vars(r)
 		id := vars["id"]
 
