@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import CardComponent from './CardComponent';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import CardComponent from './CardComponent'
+import Image from 'next/image'
 
 interface User {
   id: number;
@@ -87,7 +88,7 @@ const UserInterface: React.FC<UserInterfaceProps> = ({ backendName }) => {
 
   return (
     <div className={`user-interface ${bgColor} ${backendName} w-full max-w-md p-4 my-4 rounded shadow`}>
-      <img src={`/${backendName}logo.svg`} alt={`${backendName} Logo`} className="w-20 h-20 mb-6 mx-auto" />
+      <Image src={`/${backendName}logo.svg`} alt={`${backendName} Logo`} width={20} height={20} />
       <h2 className="text-xl font-bold text-center text-white mb-6">{`${backendName.charAt(0).toUpperCase() + backendName.slice(1)} Backend`}</h2>
 
       {/* Form to add new user */}
@@ -147,7 +148,7 @@ const UserInterface: React.FC<UserInterfaceProps> = ({ backendName }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default UserInterface;
